@@ -1,0 +1,53 @@
+</head>
+<body>
+<!--头部-->
+	<div class='top-list-wrap'>
+		<div class='top-list'>
+			<ul class='l-list'>
+				<li><a href="http://www.nicewen.com" target='_blank'>优文网</a></li>
+				<li><a href="http://weibo.com/aabbxyx" target='_blank'>官方微博</a></li>
+				<li><a href="http://www.aabbxyx.com" target='_blank'>娱乐中心</a></li>
+			</ul>
+			<ul class='r-list'>
+				<li><a href="http://www.nicewen.com/lizhi/" target='_blank'>励志</a></li>
+				<li><a href="http://www.nicewen.com/jingdianyulu/" target='_blank'>语录</a></li>
+			</ul>
+		</div>
+	</div>
+
+
+	<div class='top-search-wrap'>
+		<div class='top-search'>
+			<a href="http://www.nicewen.com" target='_blank' class='logo'>
+				<img src="__PUBLIC__/Images/logo.gif"/>
+			</a>
+			<div class='search-wrap'>
+				<form action="{:U(MODULE_NAME.'/Search/search')}" method='get'>
+					<input type="text" name='keyword' class='search-content'/>
+					<input type="submit" name='search' value='搜索'/>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<div class='top-nav-wrap'>
+		<ul class='nav-lv1'>
+			<li class='nav-lv1-li'>
+				<a href="/" class='top-cate'>博客首页</a>
+			</li>
+			
+			<foreach name="nav_cate" item="v">
+			<li class='nav-lv1-li'>
+				<a href="{:U('/list-'.$v['id'])}" class='top-cate'>{$v.name}</a>
+				<if condition="$v['child']">
+				<ul>
+					<foreach name="v.child" item="val">
+					<li><a href="{:U('/list-'.$val['id'])}">{$val.name}</a></li>
+					</foreach>
+				</ul>
+				</if>
+			</li>
+			</foreach>
+		</ul>
+	</div>
